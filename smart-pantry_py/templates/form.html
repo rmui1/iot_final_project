@@ -1,0 +1,25 @@
+<form class="form-inline" method="POST" action="{{ url_for('calculations') }}">
+    <div class="form-group">
+        <div class="input-group">
+            {% for d in dropdowns %}
+                <div>
+                    {{d.name}}:
+                    <select name={{d.name}} class="selectpicker form-control">
+                        {% for o in d.options %}
+                            <option value="{{ o }}">{{ o }}</option>
+                        {% endfor %}
+                    </select>
+                </div>  
+            {% endfor %}
+            {% for t in textboxes %}
+                <div>
+                    {{t}}:
+                    <input name={{t}}>
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-default">Test Calculations</button>
+        </div>
+    </div>
+</form>

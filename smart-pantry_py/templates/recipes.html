@@ -1,0 +1,27 @@
+<div>
+    <h3>Received Information</h3>
+        <img src={{ image_path }} height="300">
+        <img src="/static/result.jpg" height="300">
+        <h4>Visible Items</h4>
+        <ul>
+            {% for item in visible %}
+            <li>{{ item }}: {{ visible[item] }}</li>
+            {% endfor %}  
+        </ul>
+        <h4>Pantry Weight: {{ food_weight }} oz (Raw Sensor Reading: {{ received_food_weight }})</h4>
+        <h4>Inferred Items</h4>
+        <ul>
+            {% for item in inferred %}
+            <li>{{ item.food }}: {{ item.count }}</li>
+            {% endfor %}  
+        </ul>
+    <h3>Recommended Nutritional Values</h3>
+    <h4>Calories: {{ calories }} | Protein: {{ (calories * 0.1 / 4) | round(1, 'ceil') }} -  {{ (calories * 0.35 / 4) | round(1, 'ceil') }} g | Fat: less than {{ (calories * 0.35 / 9) | round(1, 'ceil') }} g | Carbohydrates: {{ (calories * 0.45 / 4) | round(1, 'ceil') }} -  {{ (calories * 0.65 / 4) | round(1, 'ceil') }} g</h4>
+    <h3>Recipes</h3>
+    {% for recipe in recipes %}
+        <h4>{{ recipe.title }}</h4>
+        <h5>Calories: {{ recipe.calories }} | Protein: {{ recipe.protein }} g | Fat: {{ recipe.fat }} g | Carbohydrates: {{ recipe.carbs }} g</h5>
+        <h5>Used Ingredients: {{ recipe.used_ingredients }}</h5>
+        <a href={{ recipe.link }}>Recipe Link</a>
+    {% endfor %}  
+</div>
